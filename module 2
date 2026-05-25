@@ -1,0 +1,64 @@
+/*
+    File: variables.js
+    Author: jaymie Louis
+    Course: COP1801 JavaScript
+    Assignment: JavaScript Variables Demonstration
+    Purpose: This program demonstrates how JavaScript creates variables,
+             stores values, determines data types, and performs a calculation.
+*/
+
+// Ask the user for their first name and store the answer in the variable Fname.
+let Fname = prompt("Please enter your first name:");
+
+// If the user leaves the name blank or cancels, use a default name.
+if (Fname === null || Fname.trim() === "") {
+    Fname = "Student";
+}
+
+// Create a constant named piValue to store Pi to 7 significant digits.
+const piValue = 3.1415926;
+
+// Store the value of Pi in the constant myPi, as required by the formula instructions.
+const myPi = piValue;
+
+// Ask the user to enter their favorite number and store it in myFavNum.
+let myFavNum = prompt("Please enter your favorite number:");
+
+// Convert the favorite number from text to a number so it can be used in math.
+myFavNum = Number(myFavNum);
+
+// If the user enters something that is not a number, use 1 as a safe default radius.
+if (isNaN(myFavNum)) {
+    myFavNum = 1;
+}
+
+// Calculate the area of a circle using the formula A = πr².
+// The user's favorite number is used as the radius.
+let myArea = myPi * Math.pow(myFavNum, 2);
+
+// Store the output area rounded to 6 decimal places for a cleaner display.
+let roundedArea = myArea.toFixed(6);
+
+// Display a welcome message and the contents of each variable on the webpage.
+document.getElementById("output").innerHTML = `
+    <h2>Results</h2>
+    <p>Hello ${Fname}, welcome to the JavaScript variables demonstration.</p>
+    <p><strong>Fname:</strong> ${Fname} is the first name entered by the user.</p>
+    <p><strong>piValue:</strong> ${piValue} is the value of Pi stored to 7 significant digits.</p>
+    <p><strong>myPi:</strong> ${myPi} is the constant used in the circle area formula.</p>
+    <p><strong>myFavNum:</strong> ${myFavNum} is the favorite number entered by the user and used as the radius.</p>
+    <p><strong>myArea:</strong> ${roundedArea} is the area of a circle with a radius of ${myFavNum}.</p>
+    <p>Hello ${Fname}, you entered ${myFavNum} as your favorite number. If that was the radius of a circle, the circle's area would be ${roundedArea}.</p>
+    <h3>Data Types</h3>
+    <p><strong>typeof Fname:</strong> ${typeof Fname}</p>
+    <p><strong>typeof piValue:</strong> ${typeof piValue}</p>
+    <p><strong>typeof myFavNum:</strong> ${typeof myFavNum}</p>
+    <p><strong>typeof myArea:</strong> ${typeof myArea}</p>
+`;
+
+// Display the same information in the browser console for testing.
+console.log("Fname:", Fname, "Type:", typeof Fname);
+console.log("piValue:", piValue, "Type:", typeof piValue);
+console.log("myPi:", myPi, "Type:", typeof myPi);
+console.log("myFavNum:", myFavNum, "Type:", typeof myFavNum);
+console.log("myArea:", myArea, "Type:", typeof myArea);
