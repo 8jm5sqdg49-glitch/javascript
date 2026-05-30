@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Loops and Arrays</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>JavaScript Loops and Arrays</h1>
+        <p>This webpage demonstrates a for loop, a do/while loop, and an array.</p>
+
+        <section>
+            <h2>For Loop: Odd or Even</h2>
+            <div id="forLoopOutput"></div>
+        </section>
+
+        <section>
+            <h2>Do/While Loop</h2>
+            <div id="doWhileOutput"></div>
+        </section>
+
+        <section>
+            <h2>Subject Array Using forEach()</h2>
+            <div id="arrayOutput"></div>
+        </section>
+
+        <section>
+            <h2>Subjects Separated by Commas</h2>
+            <div id="commaOutput"></div>
+        </section>
+    </main>
+
+    <script src="loops_arrays.js"></script>
+</body>
+</html>
