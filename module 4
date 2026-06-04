@@ -1,0 +1,68 @@
+/*
+    Tip Calculator Assignment
+    This JavaScript program demonstrates how functions can reduce repetitive code.
+
+    Program tasks:
+    1. Prompt the user for a service amount.
+    2. Prompt the user for service quality: great, ok, or poor.
+    3. Validate the service quality.
+    4. Validate that the service amount is between $5.00 and $500.00.
+    5. Calculate the recommended tip amount.
+    6. Display a descriptive message on the webpage.
+*/
+
+// This function verifies that the service quality is valid.
+function isValidServiceQuality(serviceQuality) {
+    return serviceQuality === "great" || serviceQuality === "ok" || serviceQuality === "poor";
+}
+
+// This function verifies that the service amount is a number between $5.00 and $500.00.
+function isValidServiceAmount(serviceAmount) {
+    return !isNaN(serviceAmount) && serviceAmount >= 5.00 && serviceAmount <= 500.00;
+}
+
+// This function calculates and returns the tip amount based on service quality.
+function calculateTip(serviceAmount, serviceQuality) {
+    let tipRate;
+
+    if (serviceQuality === "great") {
+        tipRate = 0.20;
+    } else if (serviceQuality === "ok") {
+        tipRate = 0.15;
+    } else {
+        tipRate = 0.10;
+    }
+
+    return serviceAmount * tipRate;
+}
+
+// Prompt the user to enter the service amount.
+let serviceAmount = parseFloat(prompt("Enter the dollar amount of the service between $5.00 and $500.00:"));
+
+// Prompt the user to enter the service quality.
+let serviceQuality = prompt("Enter the service quality: great, ok, or poor:");
+
+if (serviceQuality !== null) {
+    serviceQuality = serviceQuality.toLowerCase();
+}
+
+// Create a variable for the output area on the webpage.
+let output = document.getElementById("tipOutput");
+
+// Validate service quality first.
+if (!isValidServiceQuality(serviceQuality)) {
+    output.innerHTML = "Invalid service quality entered. Please refresh the page and enter great, ok, or poor.";
+}
+// Validate the service amount.
+else if (!isValidServiceAmount(serviceAmount)) {
+    output.innerHTML = "Invalid service amount entered. Please refresh the page and enter an amount between $5.00 and $500.00.";
+}
+// If both values are valid, calculate and display the recommended tip.
+else {
+    let tipAmount = calculateTip(serviceAmount, serviceQuality);
+
+    output.innerHTML =
+        "The service amount was $" + serviceAmount.toFixed(2) + ".<br>" +
+        "The service quality was " + serviceQuality + ".<br>" +
+        "The recommended tip is $" + tipAmount.toFixed(2) + ".";
+}
