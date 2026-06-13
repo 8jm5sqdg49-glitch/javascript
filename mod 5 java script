@@ -1,0 +1,47 @@
+let myDog = {
+    name: "Scooby-Doo",
+    breed: "Great Dane",
+    tvProgram: "Scooby-Doo, Where Are You!",
+    notes: "Lifelong companion of Shaggy Rogers who solves mysteries with a group of teenagers.",
+    mySound: "Ruh-roh! I may sound scared, but I am always ready for a snack and a mystery."
+};
+
+// Step 2: Display the object literal values in a descriptive message.
+document.getElementById("literalOutput").innerHTML =
+    "My favorite fictional dog is " + myDog.name + ".<br>" +
+    myDog.name + " is a " + myDog.breed + " from the animated television program " +
+    myDog.tvProgram + ".<br>" +
+    "Description: " + myDog.notes + "<br>" +
+    "My sound is: " + myDog.mySound;
+
+// Step 3: Create a simple constructor for another dog object.
+function Dog(name, breed, tvProgram, notes, mySound, canTalk) {
+    this.name = name;
+    this.breed = breed;
+    this.tvProgram = tvProgram;
+    this.notes = notes;
+    this.mySound = mySound;
+    this.canTalk = canTalk;
+
+    // Step 4: Add an object method named myGreeting.
+    this.myGreeting = function() {
+        return "Hello, my name is " + this.name + ".<br>" +
+            "I am a " + this.breed + " from " + this.tvProgram + ".<br>" +
+            "Here is something about me: " + this.notes + "<br>" +
+            "Can I talk? " + this.canTalk + ".<br>" +
+            "This is how I sound: " + this.mySound;
+    };
+}
+
+// Step 5: Create the myDogConst object using the constructor.
+let myDogConst = new Dog(
+    "Scooby-Doo",
+    "Great Dane",
+    "Scooby-Doo, Where Are You!",
+    "Lifelong companion of Shaggy Rogers who solves mysteries with a group of teenagers.",
+    "Ruh-roh! I sound nervous, but I still help solve the case.",
+    true
+);
+
+// Step 6: Call the object's method to display the greeting message.
+document.getElementById("constructorOutput").innerHTML = myDogConst.myGreeting();
