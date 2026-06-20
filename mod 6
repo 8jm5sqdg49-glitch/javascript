@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Object Constructors</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <h1>JavaScript Object Constructors</h1>
+        <p>This webpage demonstrates constructor functions, multiple objects, a for...in loop, and object methods.</p>
+
+        <section>
+            <h2>Available Dogs</h2>
+            <div id="dogListOutput"></div>
+        </section>
+
+        <section>
+            <h2>Selected Dog</h2>
+            <p id="selectedDogOutput"></p>
+        </section>
+    </main>
+
+    <script src="dog_objects.js"></script>
+</body>
+</html>
