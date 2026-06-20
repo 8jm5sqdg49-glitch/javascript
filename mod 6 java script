@@ -1,0 +1,101 @@
+/*
+    Module 06 - JavaScript Object Constructors
+
+    This program uses fictional dogs from Wikipedia's List of Fictional Dogs
+    in Animated Television. It demonstrates:
+    1. A constructor function for creating dog objects
+    2. Multiple objects created from the same constructor
+    3. A myGreeting method that uses a conditional statement
+    4. A for...in loop to display object properties and values
+    5. A prompt that lets the user select a dog by name
+*/
+
+// Constructor function used to create dog objects.
+function Dog(name, breed, tvProgram, notes, mySound, canTalk) {
+    this.name = name;
+    this.breed = breed;
+    this.tvProgram = tvProgram;
+    this.notes = notes;
+    this.mySound = mySound;
+    this.canTalk = canTalk;
+
+    // Object method that displays dog information and whether the dog can talk.
+    this.myGreeting = function() {
+        let talkMessage;
+
+        if (this.canTalk === true) {
+            talkMessage = "I can talk!";
+        } else {
+            talkMessage = "I cannot talk.";
+        }
+
+        return "Hello, my name is " + this.name + ".<br>" +
+            "I am a " + this.breed + " from " + this.tvProgram + ".<br>" +
+            "Here is something about me: " + this.notes + "<br>" +
+            talkMessage + "<br>" +
+            "This is how I sound: " + this.mySound;
+    };
+}
+
+// Create multiple dog objects using the constructor.
+let scoobyDoo = new Dog(
+    "Scooby-Doo",
+    "Great Dane",
+    "Scooby-Doo, Where Are You!",
+    "A talking mystery-solving dog and lifelong companion of Shaggy Rogers.",
+    "Ruh-roh! I may sound scared, but I am always ready for a snack and a mystery.",
+    true
+);
+
+let odie = new Dog(
+    "Odie",
+    "Dachshund",
+    "Garfield and Friends",
+    "Garfield's kind but silly dog friend.",
+    "I sound playful and excited because I am always happy to see my friends.",
+    false
+);
+
+// Store the dog objects in an array so they can be displayed and searched.
+let dogArray = [scoobyDoo, odie];
+
+// Display each property and value for each dog using a for...in loop.
+let dogListMessage = "";
+
+for (let i = 0; i < dogArray.length; i++) {
+    dogListMessage += "<strong>Dog " + (i + 1) + "</strong><br>";
+
+    for (let property in dogArray[i]) {
+        if (property !== "myGreeting") {
+            dogListMessage += property + ": " + dogArray[i][property] + "<br>";
+        }
+    }
+
+    dogListMessage += "<br>";
+}
+
+document.getElementById("dogListOutput").innerHTML = dogListMessage;
+
+// Prompt the user to select one of the dogs by typing the dog's name.
+let selectedName = prompt("Select a dog by typing one of these names: Scooby-Doo or Odie");
+
+if (selectedName !== null) {
+    selectedName = selectedName.toLowerCase();
+}
+
+// Find the selected dog object.
+let selectedDog = null;
+
+for (let i = 0; i < dogArray.length; i++) {
+    if (dogArray[i].name.toLowerCase() === selectedName) {
+        selectedDog = dogArray[i];
+    }
+}
+
+// Display the selected dog's greeting or an error message.
+if (selectedDog !== null) {
+    document.getElementById("selectedDogOutput").innerHTML = selectedDog.myGreeting();
+} else {
+    document.getElementById("selectedDogOutput").innerHTML =
+        "Error: The dog you selected does not exist in the list. Please refresh the page and choose Scooby-Doo or Odie.";
+}
